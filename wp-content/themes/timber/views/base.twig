@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    {{ function('wp_head') }}
+</head>
+<body {{ body_class }}>
+{% include 'header.twig' %}
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+{% include 'footer.twig' %}
+
+{{ function('wp_footer') }}
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% if portfolio.education is not empty %}
+    <section id="{{ portfolio.education_section_title|sanitize }}" class="education section-content-item">
+        <div class="section-heading text-center">
+            <h2>{{ portfolio.education_section_title }}</h2>
+        </div>
+        <div class="container">
+            <div class="education-horizontal-timeline">
+                <div class="row">
+                    {% for eduction in portfolio.education %}
+                        <div class="col-sm-4">
+                            <div class="single-horizontal-timeline">
+                                <div class="experience-time">
+                                    <h2>{{ eduction.date }}</h2>
+                                    <h3>{{ eduction.degree }}</h3>
+                                </div>
+                                <div class="timeline-horizontal-border">
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    <span class="single-timeline-horizontal"></span>
+                                </div>
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <h4 class="title">
+                                            {{ eduction.entityschool }}
+                                        </h4>
+                                        <h5> {{ eduction.location }}</h5>
+                                        <p class="description">
+                                            {{ eduction.description }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

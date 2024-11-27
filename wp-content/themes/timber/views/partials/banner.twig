@@ -1,0 +1,21 @@
+<section id="welcome-hero" class="welcome-hero"
+         style="background: url({{ function('wp_get_attachment_image_url',portfolio.background,'full' ) }})
+                 no-repeat
+                 center;
+                 background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="header-text">
+                    <h1>{{ portfolio.title }}</h1>
+                    <p>{{ portfolio.sub_title }}</p>
+                    {% if portfolio.resume is not empty %}
+                        <a href="{{ portfolio.resume }}" download>
+                            {{ __( 'Download resume', text_domain ) }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

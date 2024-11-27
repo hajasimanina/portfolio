@@ -1,0 +1,20 @@
+{% if portfolio.clients is not empty %}
+    <section id="{{ portfolio.clients_section_title|sanitize }}" class="clients section-content-item">
+        <div class="section-heading text-center">
+            <h2>{{ portfolio.clients_section_title }}</h2>
+        </div>
+        <div class="clients-area">
+            <div class="{{ portfolio.client_class }}" id="client">
+                {% for client in portfolio.clients %}
+                    <a href="{{ client.link.url }}" target="{{ client.link.target }}"
+                       title="{{ client.link.title }}">
+                        <div class="item">
+                            {{ function( 'wp_get_attachment_image',client.logo , 'medium' ) }}
+                        </div>
+                        <p class="description">{{ client.link.title }}</p>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

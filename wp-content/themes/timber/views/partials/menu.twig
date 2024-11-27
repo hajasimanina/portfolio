@@ -1,0 +1,17 @@
+{% if primary_menus.items is not empty %}
+    <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+        <!-- Start Header Navigation -->
+
+        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+            <li class=" smooth-menu navbar-header">
+                <a class="navbar-brand" href="{{ site.home_url }}">{{ site.name }}</a>
+            </li>
+            {% for key,item in primary_menus.items %}
+                <li class=" smooth-menu active"></li>
+                <li class=" smooth-menu {% if key==0 %}active{% endif %}">
+                    <a href="#{{ item.post_name }}">{{ item.post_title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

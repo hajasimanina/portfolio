@@ -1,0 +1,105 @@
+<section id="contact-me" class="contact section-content-item">
+
+    <div class="section-heading text-center">
+        <h2>{{ __( 'Contact me', text_domain ) }}</h2>
+    </div>
+
+    <div class="container">
+        <div class="contact-content">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-5 col-sm-6">
+                    <div class="single-contact-box">
+                        <div class="contact-form">
+                            <form method="post" id="portfolio-form-data">
+                                {{ function('wp_nonce_field','portfolio_form_contact',
+                                    'contact_nonce') }}
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="contact-name">{{ __('Name',text_domain) }}*</label>
+                                            <input type="text"
+                                                   required class="form-control" id="contact-name"
+                                                   name="contact_username">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="email">{{ __('Email',text_domain) }}</label>
+                                            <input type="email" required class="form-control"
+                                                   id="email"
+                                                   name="contact_email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="subject">{{ __('Subject',text_domain) }}</label>
+                                            <input type="text" class="form-control" id="subject" required
+                                                   name="contact_subject">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="comment">{{ __('Message',text_domain) }}</label>
+                                            <textarea name="contact_message" class="form-control" rows="4"
+                                                      id="comment" required
+                                                      placeholder="{{ __('Message',text_domain) }}*">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="single-contact-btn">
+                                            <button type="submit" class="contact-btn" id="portfolio-submit-form"
+                                                    role="button">
+                                                {{ __( 'Submit',  text_domain ) }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-offset-1 col-md-5 col-sm-6">
+                    <div class="single-contact-box">
+                        <div class="contact-adress">
+                            <div class="contact-add-head">
+                                <h3>{{ site.name }}</h3>
+                                <p>{{ portfolio.sub_title }}</p>
+                            </div>
+                            {% if portfolio.contacts_1 is not empty %}
+                                <div class="contact-add-info">
+                                    {% for contact_1 in portfolio.contacts_1 %}
+                                        <div class="single-contact-add-info">
+                                            <h3>{{ contact_1.label }}</h3>
+                                            <p>{{ contact_1.value }}</p>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% if portfolio.contacts_2 is not empty %}
+                            <div class="hm-foot-icon">
+                                <ul>
+                                    {% for contact_2 in portfolio.contacts_2 %}
+                                        <li>
+                                            <a href="{{ contact_2.value }}">
+                                                <i class="dashicons {{ contact_2.icon }}" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

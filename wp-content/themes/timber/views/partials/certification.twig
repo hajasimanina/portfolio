@@ -1,0 +1,22 @@
+{% if portfolio.certifications is not empty %}
+    <section id="{{ portfolio.certification_section_title|sanitize }}" class="certification section-content-item">
+        <div class="section-heading text-center">
+            <h2>{{ portfolio.certification_section_title }}</h2>
+        </div>
+        <div class="clients-area">
+            <div class="container certification-content">
+                <div class="{{ portfolio.certifications_class }}" id="client">
+                    {% for certification in portfolio.certifications %}
+                        <a href="{{ certification.link.url }}" target="{{ certification.link.target }}"
+                           title="{{ certification.link.title }}">
+                            <div class="item">
+                                {{ function( 'wp_get_attachment_image',certification.logo , 'medium' ) }}
+                            </div>
+                            <p class="description">{{ certification.link.title }}</p>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

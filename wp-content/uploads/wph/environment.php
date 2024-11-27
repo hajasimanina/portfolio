@@ -1,0 +1,2 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+$environment_variable = '{"theme":{"folder_name":"timber","mapped_name":""},"allowed_paths":["\/home\/vol8_3\/infinityfree.com\/if0_37649930\/htdocs\/wp-content\/themes"],"cache_path":"\/home\/vol8_3\/infinityfree.com\/if0_37649930\/htdocs\/wp-content\/cache\/wph\/","wordpress_directory":"","site_relative_path":"\/"}'; ?>

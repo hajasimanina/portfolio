@@ -1,0 +1,83 @@
+{% if portfolio.realization1 is not empty %}
+    <section id="{{ portfolio.realization_section_title|sanitize }}" class="portfolio section-content-item">
+        <div class="portfolio-details">
+            <div class="section-heading text-center">
+                <h2>{{ portfolio.realization_section_title }}</h2>
+            </div>
+
+            <div class="container">
+                <p class="description">
+                    {{ portfolio.realization_description }}
+                </p>
+                <div class="portfolio-content">
+                    <div class="isotope">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                {% for realization1 in  portfolio.realization1 %}
+                                    <a href="{{ realization1.site_url.url }}"
+                                       class="realization-item"
+                                       target="{{ realization1.site_url.target }}">
+                                        <div class="item">
+                                            {{ function('wp_get_attachment_image',realization1.site_logo,'medium') }}
+                                            <div class="isotope-overlay">
+                                                {{ realization1.site_url.title }}
+                                                <br>
+                                                ( {{ realization1.technology }} )
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <p class="position-item">
+                                        {{ realization1.company }}
+                                    </p>
+                                {% endfor %}
+                            </div>
+                            {% if  portfolio.realization2 is not empty %}
+                                <div class="col-sm-4">
+                                    {% for realization2 in  portfolio.realization2 %}
+                                        <a href="{{ realization2.site_url.url }}"
+                                           class="realization-item"
+                                           target="{{ realization2.site_url.target }}">
+                                            <div class="item">
+                                                {{ function('wp_get_attachment_image',realization2.site_logo,'medium') }}
+                                                <div class="isotope-overlay">
+                                                    {{ realization2.site_url.title }}
+                                                    <br>
+                                                    ( {{ realization2.technology }} )
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <p class="position-item">
+                                            {{ realization2.company }}
+                                        </p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if  portfolio.realization3 is not empty %}
+                                <div class="col-sm-4">
+                                    {% for realization3 in  portfolio.realization3 %}
+                                        <a href="{{ realization3.site_url.url }}"
+                                           class="realization-item"
+                                           target="{{ realization3.site_url.target }}">
+                                            <div class="item">
+                                                {{ function('wp_get_attachment_image',realization3.site_logo,
+                                                    'medium') }}
+                                                <div class="isotope-overlay">
+                                                    {{ realization3.site_url.title }}
+                                                    <br>
+                                                    ( {{ realization3.technology }} )
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <p class="position-item">
+                                            {{ realization3.company }}
+                                        </p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
