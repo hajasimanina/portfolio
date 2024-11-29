@@ -2,7 +2,13 @@
     <div class="container">
         <div class="hm-footer-copyright text-center">
             <p>
-                &copy; copyright yourname. design and developed by <a href="https://www.themesine.com/">themesine</a>
+                {{ portfolio.copyright }} {{ portfolio.site_designer }}
+                {% if portfolio.site_designer_link.url is not empty %}
+                    <a href="{{ portfolio.site_designer_link.url }}"
+                       target="{{ portfolio.site_designer_link.target }}">
+                        {{ portfolio.site_designer_link.title }}
+                    </a>
+                {% endif %}
             </p>
         </div>
     </div>
@@ -11,7 +17,5 @@
         <div class="return-to-top">
             <i class="fa fa-angle-up " id="scroll-top"></i>
         </div>
-
     </div>
-
 </footer>

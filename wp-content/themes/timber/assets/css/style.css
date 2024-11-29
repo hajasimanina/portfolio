@@ -1152,3 +1152,66 @@ span.single-timeline-horizontal.spacial-horizontal-line {
         padding-top: 100px;
     }
 }
+
+/*Btn submit animation*/
+
+
+/* Animation loader */
+#portfolio-submit-form.sending::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    width: 20px;
+    height: 20px;
+    border: 3px solid transparent;
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/*Alert*/
+.custom-alert {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000; /* S'assurer qu'il est au-dessus des autres éléments */
+    width: 300px;
+    text-align: center;
+}
+
+.custom-alert p {
+    margin-bottom: 20px;
+}
+
+.custom-alert .btn-close-alert {
+    padding: 8px 16px;
+    background: #b636ff;
+    border: 1px solid #b636ff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-alert .btn-close-alert:hover {
+    background: #9f00ff;
+    border: 1px solid #9f00ff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+}

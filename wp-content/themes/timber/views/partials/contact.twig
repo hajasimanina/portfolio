@@ -11,22 +11,21 @@
                     <div class="single-contact-box">
                         <div class="contact-form">
                             <form method="post" id="portfolio-form-data">
-                                {{ function('wp_nonce_field','portfolio_form_contact',
-                                    'contact_nonce') }}
+                                {{ function('wp_nonce_field','portfolio_form_contact','contact_nonce') }}
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <label for="contact-name">{{ __('Name',text_domain) }}*</label>
-                                            <input type="text"
-                                                   required class="form-control" id="contact-name"
+                                            <label for="contact-name">{{ __('Nom',text_domain) }}*</label>
+                                            <input type="text" aria-label="Nom"
+                                                   class="form-control" id="contact-name"
                                                    name="contact_username">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <label for="email">{{ __('Email',text_domain) }}</label>
-                                            <input type="email" required class="form-control"
-                                                   id="email"
+                                            <label for="email">{{ __('E-mail',text_domain) }}*</label>
+                                            <input type="email" class="form-control"
+                                                   id="email" aria-label="Email"
                                                    name="contact_email">
                                         </div>
                                     </div>
@@ -34,8 +33,9 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="subject">{{ __('Subject',text_domain) }}</label>
-                                            <input type="text" class="form-control" id="subject" required
+                                            <label for="subject">{{ __('Sujet',text_domain) }}*</label>
+                                            <input type="text" class="form-control" id="subject"
+                                                   aria-label="Sujet"
                                                    name="contact_subject">
                                         </div>
                                     </div>
@@ -43,9 +43,9 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="comment">{{ __('Message',text_domain) }}</label>
+                                            <label for="comment">{{ __('Message',text_domain) }}*</label>
                                             <textarea name="contact_message" class="form-control" rows="4"
-                                                      id="comment" required
+                                                      id="comment" aria-label="Message"
                                                       placeholder="{{ __('Message',text_domain) }}*">
                                             </textarea>
                                         </div>
@@ -103,3 +103,9 @@
     </div>
 
 </section>
+
+<!-- Structure du modal -->
+<div id="custom-alert" class="custom-alert">
+    <p>Votre message d'alerte s'affiche ici.</p>
+    <button class="btn-close-alert">OK</button>
+</div>

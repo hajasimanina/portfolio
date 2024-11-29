@@ -7,11 +7,14 @@
 use Timber\Timber;
 use Timber\Post;
 
-$context                = Timber::context();
-$context['post']        = Timber::get_post();
-$context['portfolio']   = get_fields();
-$theme                  = wp_get_theme();
-$context['text_domain'] = $theme->get( 'TextDomain' );
+$context                                    = Timber::context();
+$context['post']                            = Timber::get_post();
+$context['portfolio']                       = get_fields();
+$context['portfolio']['copyright']          = get_field( 'copyright', 'option' );
+$context['portfolio']['site_designer']      = get_field( 'site_designer', 'option' );
+$context['portfolio']['site_designer_link'] = get_field( 'site_designer_link', 'option' );
+$theme                                      = wp_get_theme();
+$context['text_domain']                     = $theme->get( 'TextDomain' );
 /*Menu*/
 $context['primary_menus'] = Timber::get_menu( 'primary' );
 
@@ -45,6 +48,5 @@ $context['portfolio']['client_class'] = $client_count > 7 ? 'owl-carousel owl-th
 /**/
 $certifications_count                         = count( $context['portfolio']['certifications'] );
 $context['portfolio']['certifications_class'] = $certifications_count > 7 ? 'owl-carousel owl-theme clients-display-with-owl-carousel' : 'clients-display-without-owl-carousel';
-
 
 Timber::render( 'portfolio.twig', $context );
