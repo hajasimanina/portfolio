@@ -18,7 +18,7 @@ require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
 // Initialize the plugin
 function hwp_pe_posts_events_init() {
-	$plugin = new HWP_Posts_Events();
+	$plugin = HWP_Posts_Events::get_instance();
 	$plugin->initialize();
 }
 

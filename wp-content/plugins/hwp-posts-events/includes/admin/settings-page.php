@@ -6,7 +6,7 @@ class HWP_Setting_Page
 {
 	private $settings_group = 'hwp_pe_posts_events_settings_group';
 	private $settings_section = 'hwp_pe_posts_events_section';
-	private static $_instance;
+	private static $_instance = null;
 
 	/**
 	 * HWP_Setting_Page constructor.

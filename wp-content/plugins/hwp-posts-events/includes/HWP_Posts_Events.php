@@ -4,6 +4,21 @@ namespace HWPPostsEventsInc;
 
 class HWP_Posts_Events
 {
+
+	private static $_instance=null;
+
+	/**
+	 * Single instance of class HWP_Setting_Page (singleton)
+	 * @return HWP_Posts_Events|null
+	 */
+	public static function get_instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+
+		return self::$_instance;
+	}
+
 	/**
 	 * Init plugin
 	 */
