@@ -2,7 +2,7 @@
 
 namespace HWPPostsEventsInc;
 
-class HWP_Setting_Page
+class HWP_PE_Setting_Page
 {
 	private $settings_group = 'hwp_pe_posts_events_settings_group';
 	private $settings_section = 'hwp_pe_posts_events_section';
@@ -18,7 +18,7 @@ class HWP_Setting_Page
 
 	/**
 	 * Single instance of class HWP_Setting_Page (singleton)
-	 * @return HWP_Setting_Page
+	 * @return HWP_PE_Setting_Page
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -137,7 +137,7 @@ class HWP_Setting_Page
 	 */
 	public function render_days_before_field() {
 		$value = get_option( HWP_PE_FIELD_DAYS_BEFORE_EXPIRATION, 1 );
-		$this->render_field( 'number', [
+		hwp_pe_render_field( 'number', [
 			'name'  => HWP_PE_FIELD_DAYS_BEFORE_EXPIRATION,
 			'value' => esc_attr( $value )
 		] );
@@ -148,7 +148,7 @@ class HWP_Setting_Page
 	 */
 	public function render_run_notification_field() {
 		$value = get_option( HWP_PE_FIELD_RUN_CRON_NOTIFY_DAY, 1 );
-		$this->render_field( 'number', [
+		hwp_pe_render_field( 'number', [
 			'name'  => HWP_PE_FIELD_RUN_CRON_NOTIFY_DAY,
 			'value' => esc_attr( $value )
 		] );
@@ -159,7 +159,7 @@ class HWP_Setting_Page
 	 */
 	public function render_email_subject_field() {
 		$value = get_option( HWP_PE_FIELD_MAIL_SUBJECT, 'Post Expiration Reminder' );
-		$this->render_field( 'text', [
+		hwp_pe_render_field( 'text', [
 			'name'  => HWP_PE_FIELD_MAIL_SUBJECT,
 			'value' => esc_attr( $value ),
 			'attrs' => array(
@@ -174,7 +174,7 @@ class HWP_Setting_Page
 	public function render_enable_email_field() {
 		$value   = get_option( HWP_PE_FIELD_ENABLE_MAIL, 0 );
 		$checked = $value ? true : false;
-		$this->render_field( 'checkbox', [
+		hwp_pe_render_field( 'checkbox', [
 			'name'    => HWP_PE_FIELD_ENABLE_MAIL,
 			'value'   => 1,
 			'checked' => $checked
@@ -186,7 +186,7 @@ class HWP_Setting_Page
 	 */
 	public function render_email_message_field() {
 		$value = get_option( HWP_PE_FIELD_MAIL_MESSAGE, '' );
-		$this->render_field( 'wysiwyg', [
+		hwp_pe_render_field( 'wysiwyg', [
 			'name'  => HWP_PE_FIELD_MAIL_MESSAGE,
 			'value' => $value,
 		] );
@@ -201,80 +201,13 @@ class HWP_Setting_Page
 		if ( ! empty( $post_types ) ) {
 			foreach ( $post_types as $post_type ) {
 				$checked = in_array( $post_type->name, (array) $selected, true );
-				$this->render_field( 'checkbox', [
+				hwp_pe_render_field( 'checkbox', [
 					'name'    => HWP_PE_FIELD_POST_TYPES . '[]',
 					'value'   => esc_attr( $post_type->name ),
 					'checked' => $checked,
 					'label'   => esc_html( $post_type->labels->singular_name )
 				] );
 			}
-		}
-	}
-
-	/**
-	 * Generic function to render fields
-	 *
-	 * @param string $type Type of the field (e.g., text, checkbox, number, wysiwyg, select, etc.).
-	 * @param array $args Attributes and configuration for the field.
-	 */
-	private function render_field( $type, $args ) {
-		$defaults = [
-			'name'    => '',
-			'value'   => '',
-			'options' => [], // For select or checkbox group
-			'label'   => '', // Label for the field
-			'attrs'   => [], // Additional HTML attributes as key-value pairs
-		];
-		$args     = wp_parse_args( $args, $defaults );
-
-		// Extract attributes
-		$name    = esc_attr( $args['name'] );
-		$value   = esc_attr( $args['value'] );
-		$checked = isset( $args['checked'] ) ? $args['checked'] : false;
-		$attrs   = '';
-
-		// Generate additional attributes
-		foreach ( $args['attrs'] as $key => $attr_value ) {
-			$attrs .= esc_attr( $key ) . '="' . esc_attr( $attr_value ) . '" ';
-		}
-
-		// Render field based on type
-		switch ( $type ) {
-			case 'text':
-			case 'number':
-				echo '<input type="' . esc_attr( $type ) . '" name="' . $name . '" value="' . $value . '" ' . $attrs . '/>';
-				break;
-
-			case 'checkbox':
-				echo '<input type="checkbox" name="' . $name . '" value="' . $value . '" ' . checked( $checked, 1, false ) . ' ' . $attrs . '/>';
-				break;
-
-			case 'select':
-				echo '<select name="' . $name . '" ' . $attrs . '>';
-				foreach ( $args['options'] as $option_value => $option_label ) {
-					echo '<option value="' . esc_attr( $option_value ) . '" ' . selected( $value, $option_value, false ) . '>';
-					echo esc_html( $option_label );
-					echo '</option>';
-				}
-				echo '</select>';
-				break;
-
-			case 'wysiwyg':
-				wp_editor( $value, sanitize_title( $name ), [
-					'textarea_name' => $name,
-					'media_buttons' => false,
-					'teeny'         => true,
-					'editor_height' => '200'
-				] );
-				break;
-
-			default:
-				echo '<p>' . esc_html__( 'Unsupported field type: ', HWP_PE_TEXT_DOMAIN ) . esc_html( $type ) . '</p>';
-		}
-
-		// Add label if provided
-		if ( ! empty( $args['label'] ) ) {
-			echo '<label for="' . $name . '">' . esc_html( $args['label'] ) . '</label><br>';
 		}
 	}
 }

@@ -8,7 +8,7 @@
  */
 
 
-use HWPPostsEventsInc\HWP_Posts_Events;
+use HWPPostsEventsInc\HWP_PE_Posts_Events;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -18,7 +18,7 @@ require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
 // Initialize the plugin
 function hwp_pe_posts_events_init() {
-	$plugin = HWP_Posts_Events::get_instance();
+	$plugin = HWP_PE_Posts_Events::get_instance();
 	$plugin->initialize();
 }
 

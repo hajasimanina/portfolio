@@ -2,14 +2,13 @@
 
 namespace HWPPostsEventsInc;
 
-class HWP_Posts_Events
+class HWP_PE_Posts_Events
 {
-
-	private static $_instance=null;
+	private static $_instance = null;
 
 	/**
 	 * Single instance of class HWP_Setting_Page (singleton)
-	 * @return HWP_Posts_Events|null
+	 * @return HWP_PE_Posts_Events|null
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -34,6 +33,12 @@ class HWP_Posts_Events
 
 		// Initialize notifications
 		$this->load_notifications();
+
+		// Charger la classe HWP_PE_Post_Meta_Data
+		require_once HWP_PE_DIR_PATH . 'includes/admin/post-meta-data.php'; // Assurez-vous que le chemin est correct
+
+		//Init post meta box
+		$this->add_meta_box();
 	}
 
 	/**
@@ -50,7 +55,7 @@ class HWP_Posts_Events
 	 */
 	private function load_admin() {
 		require_once HWP_PE_DIR_PATH . 'includes/admin/settings-page.php';
-		HWP_Setting_Page::get_instance();
+		HWP_PE_Setting_Page::get_instance();
 	}
 
 	/**
@@ -58,7 +63,7 @@ class HWP_Posts_Events
 	 */
 	private function load_notifications() {
 		require_once HWP_PE_DIR_PATH . 'includes/notification/post-expiration-notifier.php';
-		HWP_Post_Expiration_Notifier::get_instance();
+		HWP_PE_Post_Expiration_Notifier::get_instance();
 	}
 
 	/**
@@ -79,5 +84,12 @@ class HWP_Posts_Events
 				do_action( 'hwp_pe_send_post_expiration_notification', $post );
 			}
 		}
+	}
+
+	/**
+	 * Add meta box
+	 */
+	public function add_meta_box() {
+		HWP_PE_Post_Meta_Data::get_instance();
 	}
 }

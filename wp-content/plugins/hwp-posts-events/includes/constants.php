@@ -11,3 +11,8 @@ define( 'HWP_PE_FIELD_ENABLE_MAIL', 'hwp_pe_posts_events_enable_email' );
 define( 'HWP_PE_FIELD_POST_TYPES', 'hwp_pe_posts_events_post_types' );
 define( 'HWP_PE_FIELD_MAIL_SUBJECT', 'hwp_pe_posts_events_email_subject' );
 define( 'HWP_PE_FIELD_MAIL_MESSAGE', 'hwp_pe_posts_events_email_message' );
+
+/*Post field*/
+define( 'HWP_PE_FIELD_EXPIRATION_DATE', 'hwp_pe_expiration_date' );
+define( 'HWP_PE_FIELD_EXPIRATION_NONCE_ACTION', 'hwp_pe_save_expiration_date' );
+define( 'HWP_PE_FIELD_EXPIRATION_NONCE_NAME', 'hwp_pe_expiration_date_nonce' );

@@ -3,20 +3,23 @@
 namespace HWPPostsEventsInc;
 
 
-class HWP_Post_Expiration_Notifier
+class HWP_PE_Post_Expiration_Notifier
 {
 	/**
 	 * @var null
 	 */
 	private static $_instance = null;
 
+	/**
+	 * HWP_PE_Post_Expiration_Notifier constructor.
+	 */
 	public function __construct() {
 		add_action( 'hwp_pe_send_post_expiration_notification', [ $this, 'send_notification_email' ] );
 	}
 
 	/**
 	 * Single instance of class HWP_Setting_Page (singleton)
-	 * @return HWP_Post_Expiration_Notifier|null
+	 * @return HWP_PE_Post_Expiration_Notifier|null
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
