@@ -1,0 +1,21 @@
+{
+  "name": "hwp/hwp-posts-events",
+  "description": "A plugin to manage post events in WordPress",
+  "type": "project",
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "HWPPostsEventsInc\\": "includes/"
+    },
+    "files": [
+      "includes/helpers.php",
+      "includes/constants.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Hajasimaniana",
+      "email": "haja.ramananjarasoa@gmail.com"
+    }
+  ]
+}
