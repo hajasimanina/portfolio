@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
 // Initialize the plugin
-function hwp_posts_events_init() {
+function hwp_pe_posts_events_init() {
 	$plugin = new HWP_Posts_Events();
 	$plugin->initialize();
 }
 
-add_action( 'plugins_loaded', 'hwp_posts_events_init' );
+add_action( 'plugins_loaded', 'hwp_pe_posts_events_init' );
